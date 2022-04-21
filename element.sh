@@ -1,8 +1,7 @@
 #!/bin/bash
 PSQL="psql -X --username=freecodecamp --dbname=periodic_table --tuples-only -c"
-echo -e "Please provide an element as an argument."
-read USER_INPUT
-MAIN() {
+
+  MAIN() {
   if [[ $USER_INPUT =~ ^[0-9]+$ ]]
   then
   ATOMIC_NUMBER=$USER_INPUT
@@ -69,7 +68,7 @@ MAIN() {
       # echo "$NAME"
       echo "The element with atomic number $ATOMIC_NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $ATOMIC_MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
     fi  
-  # echo "The element with atomic number $ATOMIC_NUMBER is $(echo $NAME | sed 's/ ././') ($(echo $SYMBOL | sed 's/ ././')). It's a $(echo $TYPE | sed 's/ ././'), with a mass of $(echo $ATOMIC_MASS | sed 's/ ././') amu. $(echo $NAME | sed 's/ ././') has a melting point of $(echo $MELTING_POINT | sed 's/ ././') celsius and a boiling point of $(echo $BOILING_POINT | sed 's/ ././') celsius."
+  
   else
 
   echo "I could not find that element in the database."
@@ -77,4 +76,14 @@ MAIN() {
 
 }
 
-MAIN $USER_INPUT
+
+  if [[ -z $1 ]]
+  then
+  echo -e "Please provide an element as an argument."
+  read USER_INPUT
+  MAIN $USER_INPUT
+  else 
+  USER_INPUT=$1
+  MAIN $USER_INPUT
+  fi
+

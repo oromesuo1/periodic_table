@@ -80,8 +80,8 @@ PSQL="psql -X --username=freecodecamp --dbname=periodic_table --tuples-only -c"
   if [[ -z $1 ]]
   then
   echo -e "Please provide an element as an argument."
-  read USER_INPUT
-  MAIN $USER_INPUT
+#   read USER_INPUT
+#   MAIN $USER_INPUT
   else 
   USER_INPUT=$1
   MAIN $USER_INPUT
